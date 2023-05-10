@@ -1,6 +1,9 @@
-import { legacy_createStore as createStore } from 'redux';
+import { configureStore } from '@reduxjs/toolkit'
 import formReducer  from './reducer';
 
-const store = createStore(formReducer);
+const store = configureStore({
+  reducer: formReducer
+});
 
+export type State = ReturnType<typeof store.getState>;
 export default store

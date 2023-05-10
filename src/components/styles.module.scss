@@ -1,0 +1,19 @@
+.container {
+  justify-content: center;
+  height: 100vh;
+
+  button {
+    margin: 10px;
+  }
+  
+  .textInput {
+    input {
+      width: 300px;
+    };
+  }
+  .checkBox {
+    width: 400px;
+    flex-wrap: wrap;
+    display: flex;
+  }
+}

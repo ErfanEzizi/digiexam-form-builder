@@ -1,5 +1,3 @@
-import * as Yup from 'yup';
-import { v4 as uuidv4 } from 'uuid';
 import { Field } from './types';
 import { ADD_FIELD, DELETE_FIELD, FormActionTypes } from './actions';
 
@@ -14,7 +12,7 @@ const formReducer = (state = initialState, actions: FormActionTypes): formState 
     case ADD_FIELD:
       return {
         ...state,
-        fields: [...state.fields, {...actions.payload, id: uuidv4()}],
+        fields: [...state.fields, {...actions.payload}],
       };
     case DELETE_FIELD:
       return {
@@ -26,12 +24,4 @@ const formReducer = (state = initialState, actions: FormActionTypes): formState 
   }
 }
 
-export const validationSchema = (fields: Field[]) => {
-  fields.reduce((schema, field) => {
-    if( field.validation ) {
-      return { ...schema, [field.id]: field.validation }
-    }
-    return schema;
-}, {})
-  return Yup.object().shape
-}
+export default formReducer
